@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_0i9xr53" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.7.1">
+  <bpmn:process id="signal-calcel-by-service" name="Signal Cancel By Service" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_1nka5ry</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="Event_1a21vtk">
+      <bpmn:incoming>Flow_0ai0ac1</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0ai0ac1" sourceRef="Activity_08pkq80" targetRef="Event_1a21vtk" />
+    <bpmn:serviceTask id="Activity_08pkq80" name="cancel everything" camunda:class="de.novatec.bpm.delegate.CorrelateBySignalDelegate">
+      <bpmn:incoming>Flow_1nka5ry</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ai0ac1</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_1nka5ry" sourceRef="StartEvent_1" targetRef="Activity_08pkq80" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="signal-calcel-by-service">
+      <bpmndi:BPMNEdge id="Flow_1nka5ry_di" bpmnElement="Flow_1nka5ry">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="270" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ai0ac1_di" bpmnElement="Flow_0ai0ac1">
+        <di:waypoint x="370" y="117" />
+        <di:waypoint x="422" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1a21vtk_di" bpmnElement="Event_1a21vtk">
+        <dc:Bounds x="422" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0j90e2q_di" bpmnElement="Activity_08pkq80">
+        <dc:Bounds x="270" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

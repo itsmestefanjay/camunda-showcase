@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1ctucr6" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.7.1">
+  <bpmn:process id="Process_0a67vrn" name="Signal Cancel All" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1izxsb7">
+      <bpmn:outgoing>SequenceFlow_1u0fm12</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:intermediateThrowEvent id="IntermediateThrowEvent_0c03rwn" name="cancel everything">
+      <bpmn:incoming>SequenceFlow_1u0fm12</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1uwiqc0</bpmn:outgoing>
+      <bpmn:signalEventDefinition id="SignalEventDefinition_01rtaus" signalRef="Signal_0ybo9h8" />
+    </bpmn:intermediateThrowEvent>
+    <bpmn:endEvent id="EndEvent_1wqteyc">
+      <bpmn:incoming>SequenceFlow_1uwiqc0</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1u0fm12" sourceRef="StartEvent_1izxsb7" targetRef="IntermediateThrowEvent_0c03rwn" />
+    <bpmn:sequenceFlow id="SequenceFlow_1uwiqc0" sourceRef="IntermediateThrowEvent_0c03rwn" targetRef="EndEvent_1wqteyc" />
+  </bpmn:process>
+  <bpmn:signal id="Signal_0ybo9h8" name="CancelEverything" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_0a67vrn">
+      <bpmndi:BPMNEdge id="SequenceFlow_1uwiqc0_di" bpmnElement="SequenceFlow_1uwiqc0">
+        <di:waypoint x="272" y="99" />
+        <di:waypoint x="372" y="99" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1u0fm12_di" bpmnElement="SequenceFlow_1u0fm12">
+        <di:waypoint x="154" y="99" />
+        <di:waypoint x="236" y="99" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="StartEvent_1izxsb7_di" bpmnElement="StartEvent_1izxsb7">
+        <dc:Bounds x="118" y="81" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="IntermediateThrowEvent_0c03rwn_di" bpmnElement="IntermediateThrowEvent_0c03rwn">
+        <dc:Bounds x="236" y="81" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="211" y="124" width="86" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_1wqteyc_di" bpmnElement="EndEvent_1wqteyc">
+        <dc:Bounds x="372" y="81" width="36" height="36" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

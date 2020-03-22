@@ -1,0 +1,5 @@
+rootProject.name = 'camunda-showcase'
+include 'error-handling'
+include 'delegates'
+include 'message-vs-signal'
+
