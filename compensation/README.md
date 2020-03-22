@@ -4,6 +4,7 @@ or a bank account is used but the process fails in a later state and the customn
 reservation should be cancelled etc). The process should be able to compensate the error.
 
 ## Example
+
 ![compensation bpmn model](src/main/resources/bpmn/compensation_start.png)
 
 ## Execution

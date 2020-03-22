@@ -19,10 +19,12 @@ technical nature but can also be business errors which were not considered durin
 
 ## Example
 Sync and async do not differ in the model
+
 ![sync bpmn model|300x200,20%](src/main/resources/bpmn/error_sync.png)
 
 
 Example with an error catch event
+
 ![handler bpmn model|10%](src/main/resources/bpmn/error_model.png)
 
 ## Execution
