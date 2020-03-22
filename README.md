@@ -1,5 +1,5 @@
 ## Camunda Showcase
-This show case gets into advanced techniques in Camunda BPM:
+This show case gets into a bit more advanced techniques in Camunda BPM:
 
 - Error handling
 - Signals
