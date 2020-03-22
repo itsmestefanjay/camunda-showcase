@@ -6,10 +6,7 @@ import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
-import org.springframework.web.client.HttpServerErrorException;
 
-@Component
 public class ErrorHandlingDelegate implements JavaDelegate {
 
     private Logger logger = LoggerFactory.getLogger(ErrorHandlingDelegate.class);

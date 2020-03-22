@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_0at2s3w" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.7.1">
+  <bpmn:process id="compensation_start" name="Compensation Start" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_03nguxf</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="Event_0pciurb">
+      <bpmn:incoming>Flow_0f72fno</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_03nguxf" sourceRef="StartEvent_1" targetRef="Activity_1d7wo1u" />
+    <bpmn:boundaryEvent id="Event_1i88wmy" attachedToRef="Activity_1d7wo1u">
+      <bpmn:compensateEventDefinition id="CompensateEventDefinition_1nx655p" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_1w5imd8" sourceRef="Activity_1d7wo1u" targetRef="Activity_1m8pj2i" />
+    <bpmn:sequenceFlow id="Flow_0f72fno" sourceRef="Activity_1m8pj2i" targetRef="Event_0pciurb" />
+    <bpmn:serviceTask id="Activity_1lu0d42" name="revert" isForCompensation="true" camunda:class="de.novatec.bpm.delegate.LogCompensationDelegate" />
+    <bpmn:serviceTask id="Activity_1m8pj2i" name="do something else and fail" camunda:class="de.novatec.bpm.delegate.ErrorHandlingDelegate">
+      <bpmn:incoming>Flow_1w5imd8</bpmn:incoming>
+      <bpmn:outgoing>Flow_0f72fno</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:boundaryEvent id="Event_1jq3zbk" name="error" attachedToRef="Activity_1m8pj2i">
+      <bpmn:outgoing>Flow_0zh8imz</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_1pog7xy" errorRef="Error_0zo22il" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_0zh8imz" sourceRef="Event_1jq3zbk" targetRef="Event_0mc3k2p" />
+    <bpmn:endEvent id="Event_0mc3k2p">
+      <bpmn:incoming>Flow_0zh8imz</bpmn:incoming>
+      <bpmn:compensateEventDefinition id="CompensateEventDefinition_1t2otad" />
+    </bpmn:endEvent>
+    <bpmn:serviceTask id="Activity_1d7wo1u" name="do something" camunda:class="de.novatec.bpm.delegate.LogSuccessDelegate">
+      <bpmn:incoming>Flow_03nguxf</bpmn:incoming>
+      <bpmn:outgoing>Flow_1w5imd8</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:association id="Association_0cd1vcl" associationDirection="One" sourceRef="Event_1i88wmy" targetRef="Activity_1lu0d42" />
+  </bpmn:process>
+  <bpmn:error id="Error_0zo22il" name="ServiceFailed" errorCode="E100" camunda:errorMessage="Service failed" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="compensation_start">
+      <bpmndi:BPMNEdge id="Flow_03nguxf_di" bpmnElement="Flow_03nguxf">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="270" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1w5imd8_di" bpmnElement="Flow_1w5imd8">
+        <di:waypoint x="370" y="117" />
+        <di:waypoint x="430" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0f72fno_di" bpmnElement="Flow_0f72fno">
+        <di:waypoint x="530" y="117" />
+        <di:waypoint x="722" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0zh8imz_di" bpmnElement="Flow_0zh8imz">
+        <di:waypoint x="500" y="175" />
+        <di:waypoint x="500" y="240" />
+        <di:waypoint x="602" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1atoobf_di" bpmnElement="Activity_1m8pj2i">
+        <dc:Bounds x="430" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1eel5vh_di" bpmnElement="Activity_1lu0d42">
+        <dc:Bounds x="410" y="270" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0pciurb_di" bpmnElement="Event_0pciurb">
+        <dc:Bounds x="722" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0xxaqyk_di" bpmnElement="Event_0mc3k2p">
+        <dc:Bounds x="602" y="222" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_01ud0r5_di" bpmnElement="Activity_1d7wo1u">
+        <dc:Bounds x="270" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_0cd1vcl_di" bpmnElement="Association_0cd1vcl">
+        <di:waypoint x="340" y="175" />
+        <di:waypoint x="340" y="310" />
+        <di:waypoint x="410" y="310" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_0z3ood5_di" bpmnElement="Event_1jq3zbk">
+        <dc:Bounds x="482" y="139" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="518" y="173" width="24" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0wl71w5_di" bpmnElement="Event_1i88wmy">
+        <dc:Bounds x="322" y="139" width="36" height="36" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
