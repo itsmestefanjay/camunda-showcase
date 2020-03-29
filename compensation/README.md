@@ -8,7 +8,7 @@ reservation should be cancelled etc). The process should be able to compensate t
 ![compensation bpmn model](src/main/resources/bpmn/compensation_start.png)
 
 ## Execution
-- start the application by running `./gradlew compensation:bootRun'`
+- start the application by running `./gradlew compensation:bootRun`
 - go to `localhost:8080` and login as `admin:admin`
 - start a task from the task list and check the log output
 - if you have an enterprise licence you can also check the task history in the cockpit app
