@@ -18,7 +18,7 @@ technical nature but can also be business errors which were not considered durin
 - Error BE - the process model has an error path to handle expected errors
 
 ## Example
-Sync and async do not differ in the model
+Sync and async do not differ in the model. The async execution is reached by setting the `asyncBefore` option in the modeller for the `do something and fail` activity
 
 ![sync bpmn model|300x200,20%](src/main/resources/bpmn/error_sync.png)
 
