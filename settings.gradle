@@ -3,3 +3,6 @@ include 'shared-lib'
 include 'error-handling'
 include 'message-vs-signal'
 include 'compensation'
+include 'claims-management'
+include 'camunda-cinema'
+
