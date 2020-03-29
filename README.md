@@ -15,3 +15,4 @@ Basic knowledge in
 - Camunda BPM (v7.12+)
 - SpringBoot (2.2+)
 - Java (8+)
+- Gradle (6+)
