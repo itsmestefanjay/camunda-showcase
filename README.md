@@ -5,6 +5,7 @@ This show case gets into a bit more advanced techniques in Camunda BPM:
 - Signals
 - Messages
 - Compensation
+- Multi Instance Marker (with DMN)
 - and more
 
 It will be filled with more examples over time
