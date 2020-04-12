@@ -6,15 +6,15 @@ import java.time.Instant;
 import java.time.ZoneId;
 import java.util.UUID;
 
-public class UserData implements Serializable {
+public class CreditCard implements Serializable {
 
-    private String userId;
+    private String holder;
     private String number;
     private String code;
-    private Instant expiration;
+    private Instant expirationDate;
 
-    public UserData() {
-        this.userId = UUID.randomUUID().toString();
+    public CreditCard() {
+        this.holder = UUID.randomUUID().toString();
     }
 
     public String getNumber() {
@@ -33,20 +33,20 @@ public class UserData implements Serializable {
         this.code = code;
     }
 
-    public Instant getExpiration() {
-        return expiration;
+    public Instant getExpirationDate() {
+        return expirationDate;
     }
 
-    public void setExpiration(Instant expiration) {
-        this.expiration = expiration;
+    public void setExpirationDate(Instant expirationDate) {
+        this.expirationDate = expirationDate;
     }
 
     public long getDaysUntilExpiration() {
-        Duration duration = Duration.between(Instant.now().atZone(ZoneId.systemDefault()), expiration.atZone(ZoneId.systemDefault()));
+        Duration duration = Duration.between(Instant.now().atZone(ZoneId.systemDefault()), expirationDate.atZone(ZoneId.systemDefault()));
         return duration.toDays();
     }
 
-    public String getUserId() {
-        return userId;
+    public String getHolder() {
+        return holder;
     }
 }

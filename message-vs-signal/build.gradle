@@ -8,6 +8,8 @@ group 'de.novatec.bpm'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
+// copied into generic application.yml
+ext.port=8084
 
 repositories {
     mavenCentral()

@@ -10,7 +10,7 @@
       <output id="output_1" label="Card Status" name="cardStatus" typeRef="string" />
       <rule id="DecisionRule_0oioacg">
         <inputEntry id="UnaryTests_1i5n7li">
-          <text>&gt; 60</text>
+          <text>&gt; 90</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_05cf05m">
           <text>"green"</text>
@@ -18,7 +18,7 @@
       </rule>
       <rule id="DecisionRule_1bzqy8l">
         <inputEntry id="UnaryTests_0i2lg32">
-          <text>[0..60]</text>
+          <text>[0..90]</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0v7nzbc">
           <text>"yellow"</text>

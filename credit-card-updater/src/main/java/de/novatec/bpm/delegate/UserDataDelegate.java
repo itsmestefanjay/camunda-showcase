@@ -1,7 +1,8 @@
 package de.novatec.bpm.delegate;
 
-import de.novatec.bpm.CreditCardGenerator;
-import de.novatec.bpm.model.UserData;
+import de.novatec.bpm.CreditCardService;
+import de.novatec.bpm.constants.ProcessVariable;
+import de.novatec.bpm.model.CreditCard;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.slf4j.Logger;
@@ -9,24 +10,20 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
+import java.util.Set;
 
 @Component
 public class UserDataDelegate implements JavaDelegate {
 
     Logger logger = LoggerFactory.getLogger(UserDataDelegate.class);
 
-    public static final int INVALID_COUNT = 200;
-    public static final int VALID_COUNT = 1000;
-    public static final int ALMOST_INVALID_COUNT = 100;
-
     @Autowired
-    CreditCardGenerator generator;
+    CreditCardService creditCardService;
 
     @Override
     public void execute(DelegateExecution execution) throws Exception {
-        List<UserData> users = generator.getCreditCards(VALID_COUNT, INVALID_COUNT, ALMOST_INVALID_COUNT);
-        logger.info("Received {} credit cards", users.size());
-        execution.setVariable("creditCardList", users);
+        Set<CreditCard> creditCards = creditCardService.getCreditCards(10000);
+        logger.info("Received {} credit cards to check", creditCards.size());
+        execution.setVariable(ProcessVariable.CREDIT_CARD_LIST.getName(), creditCards);
     }
 }

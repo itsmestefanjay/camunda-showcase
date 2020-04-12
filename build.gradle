@@ -1,0 +1,15 @@
+subprojects.each { p ->
+    if (!p.name.contains("shared")) {
+        p.afterEvaluate {
+            p.configure(p) {
+                def t = task(copyCamundaResources, type: Copy, dependsOn: processResources, group: 'other') {
+                    from rootProject.file("resources")
+                    into "build/resources/main"
+                    expand([port:p.port])
+                }
+                p.tasks.findByName('classes').dependsOn(t)
+
+            }
+        }
+    }
+}
