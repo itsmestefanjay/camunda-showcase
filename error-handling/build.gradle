@@ -17,6 +17,6 @@ repositories {
 
 dependencies {
     compile project(":shared-lib")
-    compile "org.camunda.bpm.springboot:camunda-bpm-spring-boot-starter-webapp:$camundaSpringbootStarterVersion"
+    compile "org.camunda.bpm.springboot:camunda-bpm-spring-boot-starter-webapp:$camundaVersion"
     compile "com.h2database:h2:$h2Version"
 }
