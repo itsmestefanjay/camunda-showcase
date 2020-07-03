@@ -12,7 +12,7 @@ It will be filled with more examples over time
 ## Prerequisits
 Basic knowledge in
 - BPMN 2.0
-- Camunda BPM (v7.12+)
-- SpringBoot (2.2+)
+- Camunda BPM (v7.13.+)
+- SpringBoot (2.2.+)
 - Java (8+)
 - Gradle (6+)
