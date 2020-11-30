@@ -12,13 +12,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class CorrelateAllDelegate implements JavaDelegate {
 
-    private Logger logger = LoggerFactory.getLogger(CorrelateAllDelegate.class);
+    private final Logger logger = LoggerFactory.getLogger(CorrelateAllDelegate.class);
 
     @Autowired
     RuntimeService runtimeService;
 
     @Override
-    public void execute(DelegateExecution execution) throws Exception {
+    public void execute(DelegateExecution execution) {
         runtimeService.createMessageCorrelation(Message.CANCEL.getMessage()).correlateAll();
         logger.info(String.format("All running instances killed with message %s", Message.CANCEL.getMessage()));
     }

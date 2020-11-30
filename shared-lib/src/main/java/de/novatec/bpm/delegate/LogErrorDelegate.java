@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 
 public class LogErrorDelegate implements JavaDelegate {
 
-    private Logger logger = LoggerFactory.getLogger(LogErrorDelegate.class);
+    private final Logger logger = LoggerFactory.getLogger(LogErrorDelegate.class);
 
     @Override
     public void execute(DelegateExecution execution) {

@@ -7,10 +7,10 @@ import org.slf4j.LoggerFactory;
 
 public class LogCancelDelegate implements JavaDelegate {
 
-    private Logger logger = LoggerFactory.getLogger(LogCancelDelegate.class);
+    private final Logger logger = LoggerFactory.getLogger(LogCancelDelegate.class);
 
     @Override
-    public void execute(DelegateExecution execution) throws Exception {
+    public void execute(DelegateExecution execution) {
         logger.info(String.format("Task %s got cancelled", execution.getProcessInstanceId()));
     }
 }

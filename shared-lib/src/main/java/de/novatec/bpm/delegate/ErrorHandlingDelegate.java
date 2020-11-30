@@ -9,10 +9,10 @@ import org.slf4j.LoggerFactory;
 
 public class ErrorHandlingDelegate implements JavaDelegate {
 
-    private Logger logger = LoggerFactory.getLogger(ErrorHandlingDelegate.class);
+    private final Logger logger = LoggerFactory.getLogger(ErrorHandlingDelegate.class);
 
     @Override
-    public void execute(DelegateExecution execution) throws Exception {
+    public void execute(DelegateExecution execution) {
         try {
             SomeService.doSomething();
         } catch(IllegalAccessException e) {

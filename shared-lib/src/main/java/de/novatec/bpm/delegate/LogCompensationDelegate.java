@@ -7,10 +7,10 @@ import org.slf4j.LoggerFactory;
 
 public class LogCompensationDelegate implements JavaDelegate {
 
-    private Logger logger = LoggerFactory.getLogger(LogCompensationDelegate.class);
+    private final Logger logger = LoggerFactory.getLogger(LogCompensationDelegate.class);
 
     @Override
-    public void execute(DelegateExecution execution) throws Exception {
+    public void execute(DelegateExecution execution) {
         logger.info(String.format("Activity %s got compensated", execution.getActivityInstanceId()));
     }
 }
