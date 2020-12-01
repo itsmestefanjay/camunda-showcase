@@ -8,7 +8,6 @@ subprojects.each { p ->
                     expand([port:p.port])
                 }
                 p.tasks.findByName('classes').dependsOn(t)
-
             }
         }
     }

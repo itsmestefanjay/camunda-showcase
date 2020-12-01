@@ -13,6 +13,6 @@ It will be filled with more examples over time
 Basic knowledge in
 - BPMN 2.0
 - Camunda BPM (v7.13.+)
-- SpringBoot (2.2.+)
-- Java (8+)
+- SpringBoot (2.4.+)
+- Java (11+)
 - Gradle (6+)
