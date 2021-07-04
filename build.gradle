@@ -1,11 +1,24 @@
 subprojects.each { p ->
-    if (!p.name.contains("shared")) {
-        p.afterEvaluate {
-            p.configure(p) {
+    p.afterEvaluate {
+        p.configure(p) {
+            p.group 'de.novatec.bpm'
+            p.version '1.0-SNAPSHOT'
+            p.sourceCompatibility = 11
+            p.dependencies {
+                implementation "org.camunda.bpm.springboot:camunda-bpm-spring-boot-starter-webapp:$camundaVersion"
+            }
+            p.repositories {
+                mavenCentral()
+            }
+            if (!p.name.contains("shared")) {
+                p.dependencies {
+                    implementation project(":shared-lib")
+                    implementation "com.h2database:h2:$h2Version"
+                }
                 def t = task(copyCamundaResources, type: Copy, dependsOn: processResources, group: 'other') {
                     from rootProject.file("resources")
                     into "build/resources/main"
-                    expand([port:p.port])
+                    expand([port: p.port])
                 }
                 p.tasks.findByName('classes').dependsOn(t)
             }

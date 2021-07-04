@@ -1,22 +1,8 @@
 plugins {
-    id 'java'
+    id 'java-library'
     id 'idea'
     id "org.springframework.boot" version "$springBootVersion"
 }
 
-group 'de.novatec.bpm'
-version '1.0-SNAPSHOT'
-
-sourceCompatibility = 1.8
 // copied into generic application.yml
 ext.port=8083
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    compile project(":shared-lib")
-    compile "org.camunda.bpm.springboot:camunda-bpm-spring-boot-starter-webapp:$camundaVersion"
-    compile "com.h2database:h2:$h2Version"
-}

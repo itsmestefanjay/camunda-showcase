@@ -1,17 +1,8 @@
 plugins {
-    id 'java'
+    id 'java-library'
     id 'idea'
 }
 
-group 'de.novatec.bpm'
-version '1.0-SNAPSHOT'
-
-sourceCompatibility = 1.8
-
-repositories {
-    mavenCentral()
-}
-
 dependencies {
-    compile "org.camunda.bpm:camunda-engine:$camundaVersion"
+    implementation "org.camunda.bpm.springboot:camunda-bpm-spring-boot-starter-webapp:$camundaVersion"
 }
